@@ -6,8 +6,8 @@ class Message extends Component{
   render(){
     return (
       <div className="message-container">
-        <i>{this.props.data.username} <small>{this.props.data.time}</small></i>
-        <p>{this.props.data.message}</p>
+        <i>{this.props.data.author} <small>{this.props.data.created_at}</small></i>
+        <p>{this.props.data.content}</p>
       </div>
     );
   }

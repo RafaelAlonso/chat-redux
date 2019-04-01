@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { bindActionCreator } from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { setChannels, selectChannel, getMessages } from '../actions';
 
 class ChannelList extends Component{
-  static defaultProps = {
-    channels: [
-      {name: '#general'},
-      {name: '#react'},
-      {name: '#redux'}
-    ]
+  componentWillMount(){
+    this.props.setChannels();
   }
 
   changeChannel = (event) => {
@@ -17,6 +14,9 @@ class ChannelList extends Component{
       document.querySelector('.active').classList.remove('active');
     }
     selected_channel.classList.add('active');
+
+    this.props.selectChannel(selected_channel.dataset['key']);
+    this.props.getMessages(selected_channel.dataset['key']);
   }
 
   render(){
@@ -24,11 +24,19 @@ class ChannelList extends Component{
       <div className="channels-container">
         <span>Channels</span>
         <ul>
-          {this.props.channels.map(channel => <li key={channel.name} onClick={this.changeChannel}>{channel.name}</li> )}
+          {this.props.channels.map(channel => <li key={channel.name} data-key={channel.name} onClick={this.changeChannel}>#{channel.name}</li> )}
         </ul>
       </div>
     );
   }
 }
 
-export default ChannelList;
+function mapStateToProps({channels}){
+  return { channels };
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ setChannels, selectChannel, getMessages }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChannelList);

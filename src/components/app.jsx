@@ -7,7 +7,7 @@ const App = () => {
     <div className="app messaging-wrapper">
       <div className="logo-container"><img className="messaging-logo" src="assets/images/logo.svg" alt=""/></div>
       <ChannelList></ChannelList>
-      <Channel name="#general"></Channel>
+      <Channel></Channel>
     </div>
   );
 };
