@@ -11,11 +11,13 @@ import '../assets/stylesheets/application.scss';
 import channelsReducer from './reducers/channels_reducer';
 import selectedChannelReducer from './reducers/selected_channel_reducer';
 import messagesReducer from './reducers/messages_reducer';
+import usernameReducer from './reducers/username_reducer';
 
 const reducers = combineReducers({
   channels: channelsReducer,
   selectedChannel: selectedChannelReducer,
-  messages: messagesReducer
+  messages: messagesReducer,
+  username: usernameReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

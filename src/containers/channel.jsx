@@ -3,8 +3,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Message from '../components/message';
 import MessageForm from '../containers/message_form';
+import { setDefaultChannel, getMessages } from '../actions';
 
 class Channel extends Component{
+  componentWillMount(){
+    this.props.getMessages(this.props.selectedChannel);
+  }
+
   render(){
     return (
       <div className="channel-container">
@@ -22,8 +27,12 @@ class Channel extends Component{
   }
 }
 
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ setDefaultChannel, getMessages }, dispatch);
+}
+
 function mapStateToProps({selectedChannel, messages}){
   return { selectedChannel, messages };
 }
 
-export default connect(mapStateToProps)(Channel);
+export default connect(mapStateToProps, mapDispatchToProps)(Channel);

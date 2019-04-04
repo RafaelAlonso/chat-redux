@@ -17,7 +17,7 @@ class Message extends Component{
   }
 
   handleSubmit = (event) => {
-    this.props.sendMessage(this.props.selectedChannel, this.state.value);
+    this.props.sendMessage(this.props.username, this.props.selectedChannel, this.state.value);
     return this.setState({ value: '' });
   }
 
@@ -35,8 +35,8 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators({ sendMessage }, dispatch)
 }
 
-function mapStateToProps({selectedChannel}){
-  return { selectedChannel };
+function mapStateToProps({selectedChannel, username}){
+  return { selectedChannel, username };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Message);
