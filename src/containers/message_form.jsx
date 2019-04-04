@@ -17,7 +17,7 @@ class Message extends Component{
   }
 
   handleSubmit = (event) => {
-    this.props.sendMessage(this.props.username, this.props.selectedChannel, this.state.value);
+    document.querySelector('input').focus();
     return this.setState({ value: '' });
   }
 

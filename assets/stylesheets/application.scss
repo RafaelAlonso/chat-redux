@@ -83,7 +83,8 @@ body {
   padding: 20px 20px 0 28px;
   box-sizing: border-box;
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .message-container > i {

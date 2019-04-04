@@ -10,6 +10,16 @@ class Channel extends Component{
     this.props.getMessages(this.props.selectedChannel);
   }
 
+  componentDidMount() {
+    setInterval(() => {
+      this.props.getMessages(this.props.selectedChannel);
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval();
+  }
+
   render(){
     return (
       <div className="channel-container">

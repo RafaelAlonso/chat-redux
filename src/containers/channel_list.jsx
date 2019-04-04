@@ -16,6 +16,7 @@ class ChannelList extends Component{
 
     this.props.selectChannel(selected_channel.dataset['key']);
     this.props.getMessages(selected_channel.dataset['key']);
+    document.querySelector('input').focus();
   }
 
   render(){

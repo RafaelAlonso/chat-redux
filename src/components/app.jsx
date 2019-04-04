@@ -12,6 +12,10 @@ class App extends Component {
     this.props.setUsername(username);
   }
 
+  componentDidMount(){
+    document.querySelector('input').focus();
+  }
+
   render(){
     return (
       <div className="app messaging-wrapper">
